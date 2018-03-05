@@ -12,6 +12,7 @@
 package com.hankcs.hanlp.corpus.document.sentence;
 
 import com.hankcs.hanlp.corpus.document.sentence.word.IWord;
+import com.hankcs.hanlp.corpus.document.sentence.word.Word;
 import com.hankcs.hanlp.corpus.document.sentence.word.WordFactory;
 
 import java.io.Serializable;
@@ -44,12 +45,7 @@ public class Sentence implements Serializable, Iterable<IWord>
         int i = 1;
         for (IWord word : wordList)
         {
-            sb.append(word.getValue());
-            String label = word.getLabel();
-            if (label != null)
-            {
-                sb.append('/').append(label);
-            }
+            sb.append(word);
             if (i != wordList.size()) sb.append(' ');
             ++i;
         }
@@ -76,6 +72,13 @@ public class Sentence implements Serializable, Iterable<IWord>
                 return null;
             }
             wordList.add(word);
+        }
+        if (wordList.isEmpty()) // 按照无词性来解析
+        {
+            for (String w : param.split("\\s+"))
+            {
+                wordList.add(new Word(w, null));
+            }
         }
 
         return new Sentence(wordList);
