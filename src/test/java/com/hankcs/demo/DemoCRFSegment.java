@@ -49,7 +49,12 @@ public class DemoCRFSegment
         for (String sentence : sentenceArray)
         {
             List<Term> termList = segment.seg(sentence);
-            System.out.println(termList);
+
+            for (Term term : termList) {
+                if (term.nature == null) {
+                    System.out.println(term);
+                }
+            }
         }
     }
 }
