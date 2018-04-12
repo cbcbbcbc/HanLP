@@ -28,7 +28,7 @@ public class DemoSentimentAnalysis
     /**
      * 中文情感挖掘语料-ChnSentiCorp 谭松波
      */
-    public static final String CORPUS_FOLDER = "data/test/ChnSentiCorp情感分析酒店评论";
+    public static final String CORPUS_FOLDER = "data/test/ChnSentiCorp";
 
     public static void main(String[] args) throws IOException
     {
