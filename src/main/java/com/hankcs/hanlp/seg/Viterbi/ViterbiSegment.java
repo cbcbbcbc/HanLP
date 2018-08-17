@@ -75,7 +75,7 @@ public class ViterbiSegment extends WordBasedSegment
             int preSize = wordNetOptimum.size();
             if (config.nameRecognize)
             {
-                PersonRecognition.Recognition(vertexList, wordNetOptimum, wordNetAll);
+                PersonRecognition.recognition(vertexList, wordNetOptimum, wordNetAll);
             }
             if (config.translatedNameRecognize)
             {
@@ -92,6 +92,7 @@ public class ViterbiSegment extends WordBasedSegment
             if (config.organizationRecognize)
             {
                 // 层叠隐马模型——生成输出作为下一级隐马输入
+                wordNetOptimum.clean();
                 vertexList = viterbi(wordNetOptimum);
                 wordNetOptimum.clear();
                 wordNetOptimum.addAll(vertexList);

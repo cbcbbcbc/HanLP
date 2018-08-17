@@ -30,7 +30,8 @@ import java.util.*;
 import static com.hankcs.hanlp.utility.Predefine.logger;
 
 /**
- * 用户自定义词典
+ * 用户自定义词典<br>
+ *     注意自定义词典的动态增删改不是线程安全的。
  *
  * @author He Han
  */
@@ -154,8 +155,14 @@ public class CustomDictionary
             }
             BufferedReader br = new BufferedReader(new InputStreamReader(IOUtil.newInputStream(path), "UTF-8"));
             String line;
+            boolean firstLine = true;
             while ((line = br.readLine()) != null)
             {
+                if (firstLine)
+                {
+                    line = IOUtil.removeUTF8BOM(line);
+                    firstLine = false;
+                }
                 String[] param = line.split(splitter);
                 if (param[0].length() == 0) continue;   // 排除空行
                 if (HanLP.Config.Normalization) param[0] = CharTable.convert(param[0]); // 正规化
