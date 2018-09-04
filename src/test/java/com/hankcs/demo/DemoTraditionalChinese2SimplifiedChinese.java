@@ -22,6 +22,14 @@ public class DemoTraditionalChinese2SimplifiedChinese
 {
     public static void main(String[] args)
     {
+        System.out.println("我是一个软件工程师: " + HanLP.s2tw("我是一个软件工程师"));
+        System.out.println("我买了一个复印机: " + HanLP.s2tw("我买了一个复印机"));
+        System.out.println("哪里有打印机: " + HanLP.s2tw("哪里有打印机"));
+        System.out.println("网络连接世界: " + HanLP.s2tw("网络连接世界"));
+
+        if (true)return;
+
+
         System.out.println(HanLP.convertToTraditionalChinese("“以后等你当上皇后，就能买草莓庆祝了”。发现一根白头发"));
         System.out.println(HanLP.convertToSimplifiedChinese("憑藉筆記簿型電腦寫程式HanLP"));
         // 简体转台湾繁体
